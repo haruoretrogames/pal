@@ -172,7 +172,7 @@ function renderGame(){
   // log
   const last=LOG[LOG.length-1]; $('#lastLog').textContent=last?last.msg.trim():'';
   const lb=$('#logBox'); lb.hidden=!logOpen; $('#btnLog').textContent=logOpen?'收起紀錄':'戰鬥紀錄';
-  if(logOpen){ lb.innerHTML=LOG.map(l=>`<div class="lg-${l.cls}">${l.msg}</div>`).join(''); lb.scrollTop=lb.scrollHeight; }
+  lb.innerHTML=LOG.map(l=>`<div class="lg-${l.cls}">${l.msg}</div>`).join(''); lb.scrollTop=lb.scrollHeight;
   $('#btnMenu').textContent=menuArm?'確定離開？':'選單';
   flushFX();
 }

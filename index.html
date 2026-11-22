@@ -53,17 +53,23 @@
     <button data-act="rules">規則</button>
     <button data-act="menu" id="btnMenu">選單</button>
   </div>
-  <div class="status" id="status"></div>
-  <div class="side ai" id="sideAI"></div>
-  <div class="prompt" id="prompt"></div>
-  <div class="side me" id="sideMe"></div>
-  <div class="handwrap">
-    <div class="handhd">我的手牌 <span id="handInfo"></span></div>
-    <div class="hand" id="hand"></div>
+  <div class="glay">
+    <div class="gmain">
+      <div class="side ai" id="sideAI"></div>
+      <div class="prompt" id="prompt"></div>
+      <div class="side me" id="sideMe"></div>
+    </div>
+    <div class="gside">
+      <div class="status" id="status"></div>
+      <div class="handwrap">
+        <div class="handhd">我的手牌 <span id="handInfo"></span></div>
+        <div class="hand" id="hand"></div>
+      </div>
+      <div class="ticker"><span class="last" id="lastLog"></span><button data-act="log" id="btnLog">戰鬥紀錄</button></div>
+      <div class="logbox" id="logBox" hidden></div>
+    </div>
   </div>
   <div id="panel"></div>
-  <div class="ticker"><span class="last" id="lastLog"></span><button data-act="log" id="btnLog">戰鬥紀錄</button></div>
-  <div class="logbox" id="logBox" hidden></div>
 </section>
 
 </div>

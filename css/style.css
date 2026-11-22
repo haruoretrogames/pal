@@ -183,6 +183,87 @@ button{font:inherit;cursor:pointer}
 #cardpop span{display:block;text-align:center;margin-top:6px;color:var(--gold);font-family:var(--serif);font-size:15px;text-shadow:0 1px 3px #000}
 .mbtn.go{background:linear-gradient(#d8ab52,#a87b22);border-color:#a87b22;color:#1c140a;font-weight:700}
 
+/* ================= 響應式版面 ================= */
+/* 共用：戰場排列（手機與平板為單欄，依 order 排序） */
+.glay{display:flex;flex-direction:column}
+.gmain,.gside{display:contents}
+#status{order:0}#sideAI{order:1}#prompt{order:2}#sideMe{order:3}.handwrap{order:4}.ticker{order:5}#logBox{order:6}
+
+/* 手機（< 720px）：壓縮高度，讓整個戰場盡量一個畫面看完 */
+@media (max-width:719px){
+  .wrap{padding:6px 7px 16px}
+  .title{padding:26px 0 12px}.title h1{font-size:44px}
+  .top{margin-bottom:4px}.top .t{font-size:16px}.top button{padding:4px 8px;font-size:11px}
+  .status{flex-wrap:nowrap;overflow-x:auto;gap:4px;margin-bottom:5px;font-size:11px;scrollbar-width:none}
+  .status::-webkit-scrollbar{display:none}
+  .status span{white-space:nowrap;padding:2px 6px}
+  .side{padding:5px;margin-bottom:4px}
+  .shd{margin:0 1px 4px;font-size:11px;gap:6px}.shd b{font-size:13px}
+  .pip{width:9px;height:9px}
+  .chars{gap:5px}
+  .cbox{padding:0 5px 4px}
+  .cbox .art{width:calc(100% + 10px);margin:0 -5px 3px;aspect-ratio:16/10;background-position:50% 26%}
+  .cbox .nm{font-size:14px}
+  .bar{height:6px;margin:3px 0 1px}
+  .cbox .hpt{font-size:11px}
+  .cbox .sk{font-size:10px;margin-top:1px}
+  .cbox .shield{width:20px;height:20px;font-size:10px;top:-6px;right:-5px}
+  .cbox.dead::after{font-size:15px}
+  .prompt{min-height:34px;padding:5px 9px;margin:4px 0;font-size:12px}
+  .handhd{font-size:11px;margin:0 2px 3px}
+  .hand{padding:3px 2px 6px;gap:5px}
+  .card.im{flex:0 0 62px}
+  .ticker{margin-top:4px;padding:5px 8px;font-size:11px}
+  .float{font-size:17px}
+}
+
+/* 平板（720–1023px）：單欄加寬 */
+@media (min-width:720px){
+  .wrap{max-width:760px}
+  .dgrid.im{grid-template-columns:repeat(5,1fr)}
+  .card.im{flex:0 0 92px}
+}
+
+/* 電腦（≥ 1024px）：左邊戰場、右邊狀態＋手牌＋戰鬥紀錄 */
+@media (min-width:1024px){
+  .wrap{max-width:1240px;padding:14px 20px 24px}
+  #scrStart,#scrDraft{max-width:820px;margin:0 auto}
+  .title h1{font-size:64px}
+  .top .t{font-size:22px}
+  .glay{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:16px;align-items:start}
+  .gmain,.gside{display:block}
+  .gside{position:sticky;top:12px;display:flex;flex-direction:column;gap:8px;height:calc(100vh - 86px);min-height:520px}
+  .gside>*{order:0!important;margin:0!important}
+  .chars{max-width:690px;margin:0 auto;gap:12px}
+  .side{padding:10px 12px;margin-bottom:8px}
+  .shd{font-size:13px}.shd b{font-size:16px}
+  .cbox .nm{font-size:18px}.cbox .hpt{font-size:14px}.cbox .sk{font-size:12px}
+  .cbox .shield{width:28px;height:28px;font-size:13px}
+  .prompt{position:static;box-shadow:none;margin:0 0 8px;font-size:14px;min-height:46px}
+  .status{margin:0}
+  .handwrap{background:rgba(0,0,0,.18);border:1px solid #3a3024;border-radius:12px;padding:8px 10px}
+  .hand{flex-wrap:wrap;overflow:visible;gap:8px;padding:4px 0 2px}
+  .card.im{flex:0 0 calc((100% - 16px)/3)}
+  .card.sel,.card.mark{transform:translateY(-4px)}
+  #btnLog{display:none}
+  #logBox[hidden]{display:block!important}
+  .logbox{flex:1 1 0;min-height:80px;max-height:none;margin:0;overflow-y:auto}
+  .gside>.status,.gside>.handwrap,.gside>.ticker{flex:0 0 auto}
+  .ticker{margin:0}
+  .dgrid.im{grid-template-columns:repeat(5,1fr);gap:10px}
+  .popin{max-width:520px}.popin .pimg{width:130px}
+  .panel h3{font-size:20px}.panel p{font-size:14px}
+}
+/* 大螢幕：角色框放大 */
+@media (min-width:1280px) and (min-height:950px){
+  .chars{max-width:860px}
+}
+/* 螢幕較矮的電腦：縮小角色框避免超出畫面 */
+@media (min-width:1024px) and (max-height:860px){
+  .chars{max-width:560px}
+  .cbox .art{aspect-ratio:16/10}
+}
+
 /* 卡牌圖片 */
 .ci-txl{background-image:url(../cards/txl.webp)}
 .ci-yr{background-image:url(../cards/yr.webp)}
